@@ -5,9 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import be.iccbxl.pid.models.Artist;
 
-public interface ArtistRepository extends CrudRepository<Artist, Long>  {
+public interface ArtistRepository extends CrudRepository<Artist,Integer> {
 	List<Artist> findByLastname(String lastname);
-	Artist findById(int id);
 
-
+	Artist findById(long id);
 }

@@ -35,7 +35,7 @@ public class ArtistService {
 	}
  
 	public void deleteArtist(int id) {
-		artistRepository.deleteById((long) id);
+		artistRepository.deleteById(id);
 	}
 
 }

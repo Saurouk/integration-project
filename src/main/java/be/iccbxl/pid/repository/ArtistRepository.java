@@ -8,5 +8,5 @@ import be.iccbxl.pid.models.Artist;
 public interface ArtistRepository extends CrudRepository<Artist,Integer> {
 	List<Artist> findByLastname(String lastname);
 
-	Artist findById(long id);
+	Artist findById(int id);
 }

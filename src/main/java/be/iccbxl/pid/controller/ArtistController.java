@@ -24,6 +24,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 
+
 @Controller
 public class ArtistController {
 	@Autowired
@@ -123,6 +124,7 @@ public class ArtistController {
 	    	    
 	    return "redirect:/artists";
 	}
+
 
 
 }

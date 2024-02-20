@@ -59,6 +59,8 @@ public class Artist {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	
 
 	@Override
 	public String toString() {

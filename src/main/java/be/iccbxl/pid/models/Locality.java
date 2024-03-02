@@ -10,9 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-
-
-
 @Entity
 @Table(name="localities")
 public class Locality {
@@ -82,5 +79,6 @@ public class Locality {
 	}
 	
 }
+
 
 

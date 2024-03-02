@@ -1,5 +1,12 @@
 package be.iccbxl.pid.models;
 
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.slugify.Slugify;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,16 +17,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.github.slugify.Slugify;
-
 @Entity
 @Table(name="locations")
 public class Location {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	@Column(unique=true)
@@ -36,32 +38,11 @@ public class Location {
 	private String phone;
 	@OneToMany(targetEntity=Show.class, mappedBy="location")
 	private List<Show> shows = new ArrayList<>();
-	
-	public List<Show> getShows() {
-		return shows;
-	}
+	@OneToMany(targetEntity=Representation.class, mappedBy="location")
+	private List<Representation> representations = new ArrayList<>();
 
-	public Location addShow(Show show) {
-		if(!this.shows.contains(show)) {
-			this.shows.add(show);
-			show.setLocation(this);
-		}
-		
-		return this;
-	}
-	
-	public Location removeShow(Show show) {
-		if(this.shows.contains(show)) {
-			this.shows.remove(show);
-			if(show.getLocation().equals(this)) {
-				show.setLocation(null);
-			}
-		}
-		
-		return this;
-	}
 
-	
+
 	protected Location() { }
 
 	public Location(String slug, String designation, String address, Locality locality, String website, String phone) {
@@ -132,18 +113,67 @@ public class Location {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	
+
+	public List<Show> getShows() {
+		return shows;
+	}
+
+	public Location addShow(Show show) {
+		if(!this.shows.contains(show)) {
+			this.shows.add(show);
+			show.setLocation(this);
+		}
+		
+		return this;
+	}
+	
+	public Location removeShow(Show show) {
+		if(this.shows.contains(show)) {
+			this.shows.remove(show);
+			if(show.getLocation().equals(this)) {
+				show.setLocation(null);
+			}
+		}
+		
+		return this;
+	}
+	
+	public List<Representation> getRepresentations() {
+		return representations;
+	}
+
+	public Location addRepresentation(Representation representation) {
+		if(!this.representations.contains(representation)) {
+			this.representations.add(representation);
+			representation.setLocation(this);
+		}
+		
+		return this;
+	}
+	
+	public Location removeRepresentation(Representation representation) {
+		if(this.representations.contains(representation)) {
+			this.representations.remove(representation);
+			if(representation.getLocation().equals(this)) {
+				representation.setLocation(null);
+			}
+		}
+		
+		return this;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", slug=" + slug + ", designation=" + designation 
 			+ ", address=" + address	+ ", locality=" + locality + ", website=" 
-			+ website + ", phone=" + phone + ", shows=" + shows.size() + "]";
+			+ website + ", phone=" + phone + ", shows=" + shows.size()
+			+ ", representations=" + representations.size() + "]";
 	}
 
-	
-	
-	
-	
-	
+
 }
+
 

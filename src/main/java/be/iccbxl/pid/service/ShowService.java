@@ -26,7 +26,7 @@ public class ShowService {
 	}
 	
 	public Show get(String id) {
-		Long indice = (long) Integer.parseInt(id);
+		int indice = (int) Integer.parseInt(id);
 		Optional<Show> show = repository.findById(indice); 
 		
 		return show.isPresent() ? show.get() : null;
@@ -36,12 +36,12 @@ public class ShowService {
 		repository.save(show);
 	}
 
-	public void update(String id, Show show) {
+	public void update(int id, Show show) {
 		repository.save(show);
 	}
 
 	public void delete(String id) {
-		Long indice = (long) Integer.parseInt(id);
+		int indice = (int) Integer.parseInt(id);
 		
 		repository.deleteById(indice);
 	}

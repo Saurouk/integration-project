@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
  layout:decorate="~{layouts/main}">
 <head>
-<title>Fiche d'un spectacle</title>
+<title>Liste des artistes</title>
 </head>
 <body>
 	<div class="container">
 	     <div layout:fragment="content">
-	        <h1 th:text="${show.title}">Ayiti</h1>
+	        <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
+	        
+	        <h2>Liste des types</h2>
+	        <ul th:unless="${#lists.isEmpty(artist.types)}">
+	        	<li th:each="type : ${artist.types}" th:text="${type.type}">Type</li>
+   	        </ul>
 
-	        <p th:if="${show.posterUrl}">
-		<img th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.title}" src="/images/default.jpg" alt="" width="200">
-	        </p>
-	        <canvas th:unless="${show.posterUrl}" width="200" height="100" style="border:1px solid #000000;"></canvas>
-        
-	        <p th:if="${show.location}"><strong>Lieu de création:</strong> <span th:text="${show.location.designation}">Art Center</span></p>
-	
-	        <p><strong>Prix:</strong> <span th:text="${show.price} + ' €'">9.99 €</span></p>
-        
-	        <p th:if="${show.bookable}"><em>Réservable</em></p>
-	        <p th:unless="${show.bookable}"><em>Non réservable</em></p>
-        
-	        <nav><a th:href="@{/shows}">Retour à l'index</a></nav>
+   	        <nav><a th:href="@{/artists}">Retour à l'index</a></nav>
 	     </div>
 	</div>
 </body>

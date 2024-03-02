@@ -8,6 +8,6 @@ import be.iccbxl.pid.models.Type;
 
 public interface TypeRepository extends CrudRepository<Type, Integer> {
 	Type findByType(String type);
-	Optional<Type> findById(Long id);
+	Optional<Type> findById(int id);
 }
 

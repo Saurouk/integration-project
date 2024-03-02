@@ -27,7 +27,7 @@ public class RepresentationService {
 	}
 	
 	public Representation get(String id) {
-		Long indice = (long) Integer.parseInt(id);
+		Integer indice = (int) Integer.parseInt(id);
 		Optional<Representation> representation = repository.findById(indice); 
 		
 		return representation.isPresent() ? representation.get() : null;
@@ -42,7 +42,7 @@ public class RepresentationService {
 	}
 
 	public void delete(String id) {
-		Long indice = (long) Integer.parseInt(id);
+		Integer indice = (int) Integer.parseInt(id);
 		
 		repository.deleteById(indice);
 	}

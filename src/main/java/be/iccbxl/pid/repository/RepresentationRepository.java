@@ -9,7 +9,7 @@ import be.iccbxl.pid.models.Location;
 import be.iccbxl.pid.models.Representation;
 import be.iccbxl.pid.models.Show;
 
-public interface RepresentationRepository extends CrudRepository<Representation, Long> {
+public interface RepresentationRepository extends CrudRepository<Representation, Integer> {
 	List<Representation> findByShow(Show show);
 	List<Representation> findByLocation(Location location);
 	List<Representation> findByWhen(LocalDateTime when);
